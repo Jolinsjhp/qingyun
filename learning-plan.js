@@ -259,6 +259,33 @@ window.QINGYUN_PLAN = {
       "stage": "第 3 周起 · 题解对照",
       "why": "按题型对照实现；自己的解法、复杂度与测试应先写。",
       "task": "只在独立尝试后对照；24 小时后脱离题解重做，并解释边界。"
+    },
+    {
+      "type": "video",
+      "category": "vibe",
+      "title": "Google for Developers · Vibe Coding in AI Studio",
+      "url": "https://www.youtube.com/watch?v=DePOMEBfvWQ",
+      "stage": "② 入门后 · AI Studio 原型",
+      "why": "Google 官方入门视频：自然语言构建 AI 应用。先使用已核对的官方视频入口；暂未核实 8 集播放列表地址和集数。",
+      "task": "看 10–15 分钟，为活动运营 Agent 写用户、输入输出与 3 条验收标准；生成活动表单原型，再修改一个字段并验证。"
+    },
+    {
+      "type": "video",
+      "category": "vibe",
+      "title": "DeepLearning.AI · Vibe Coding 101 with Replit",
+      "url": "https://www.deeplearning.ai/courses/vibe-coding-101-with-replit",
+      "stage": "① 现在可开始 · 自然语言提需求",
+      "why": "DeepLearning.AI 与 Replit 合作，讲师 Michele Catasta 与 Matt Palmer。官方注明限时免费；课程和 Replit 实操费用以当前页面为准。",
+      "task": "每次学 15–20 分钟，为活动运营 Agent 写一页需求：用户、输入输出、范围和验收；先构建活动信息页。"
+    },
+    {
+      "type": "video",
+      "category": "vibe",
+      "title": "Anthropic 官方 · Claude Code",
+      "url": "https://www.youtube.com/@anthropic-ai/search?query=Claude%20Code",
+      "stage": "③ 会函数、Git 和测试后 · Agent 编程协作",
+      "why": "在 Anthropic 官方频道查找 Claude Code 教程。先看介绍，再学读取项目、制定计划、改代码和验证。",
+      "task": "给预算工具增加人数必须为正数的校验。先写验收案例，让编码 Agent 提计划，再看改动、运行测试并解释 3 行代码。"
     }
   ],
   "checked": "2026-10-08",
