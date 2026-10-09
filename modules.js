@@ -12,21 +12,21 @@ function moduleQueue(key){
  }
  if(key==='coding'){
   const warmups=PLAN.problems.filter(p=>p.level==='基础'&&!['本地样例通过','LeetCode 已通过'].includes(codeFor(p.id).status));
-  const bank=state.track==='business'?PLAN.problems.filter(p=>p.level==='SQL'):warmups.length?warmups:PLAN.problems.filter(p=>p.level!=='基础'&&p.level!=='SQL');
+  const bank=state.track==='business'?PLAN.problems.filter(p=>p.level==='SQL'):warmups.length?warmups:PLAN.problems.filter(p=>p.level!=='基础'&&p.level!=='SQL'&&p.level!=='Agent');
   const repeat=bank.filter(p=>codeFor(p.id).due&&codeFor(p.id).due<=day());
   const pending=bank.filter(p=>!['本地样例通过','LeetCode 已通过'].includes(codeFor(p.id).status));
   const ordered=[...repeat,...pending];
   return code((ordered.length?ordered:bank).filter((p,i,a)=>a.findIndex(x=>x.id===p.id)===i).slice(0,2));
  }
- if(key==='project')return cards(preferUnlearned(C.lessons.filter(l=>l.unit===3)).slice(0,2));
+ if(key==='project'){const steps=PLAN.problems.filter(p=>p.level==='Agent');const pending=steps.filter(p=>codeFor(p.id).status!=='本地样例通过');return code((pending.length?pending:steps).slice(0,2));}
  if(key==='reading')return cards([readingPick()]);
  if(key==='career')return cards(preferUnlearned(C.lessons.filter(l=>l.unit===4)).slice(0,2));
  return [];
 }
 function recipeModules(target){return `<div class="recipe-modules">${dailyRecipe().map(([icon,title,minutes,desc],i)=>{
  const key=MODULE_KEYS[i],queue=moduleQueue(key);
- const extra=key==='project'?'先做项目知识自测，再进入实际项目':key==='career'?'先练需求与面试，再打开作品 / 投递':key==='reading'?'自测后保存阅读笔记即可完成':key==='coding'?'公开测试全通过才继续；原站题手动确认':key==='review'?'答错停留，答对进入下一题':'概念自测 + 一道独立代码练习';
- return `<article class="recipe-module"><div class="row"><span class="icon">${icon}</span><span class="tag">${Math.round(minutes*target/180)} 分钟</span></div><h3>${title}</h3><p>${desc}</p><small>${extra}</small><div class="actions"><button class="primary" data-module="${key}" ${!queue.length?'disabled':''}>${key==='reading'?'开始阅读':key==='project'||key==='career'?'开始自测':'开始练习'}${queue.length?' · '+queue.length+' 项':''} →</button>${key==='project'||key==='career'?'<button data-go="career">打开实际任务</button>':''}</div>${!queue.length?'<small>暂无到期题，可以先学其他模块。</small>':''}</article>`;
+ const extra=key==='project'?'Agent 项目关卡：填空、运行、检查':key==='career'?'先练需求与面试，再打开作品 / 投递':key==='reading'?'自测后保存阅读笔记即可完成':key==='coding'?'公开测试全通过才继续；原站题手动确认':key==='review'?'答错停留，答对进入下一题':'概念自测 + 一道独立代码练习';
+ return `<article class="recipe-module"><div class="row"><span class="icon">${icon}</span><span class="tag">${Math.round(minutes*target/180)} 分钟</span></div><h3>${title}</h3><p>${desc}</p><small>${extra}</small><div class="actions"><button class="primary" data-module="${key}" ${!queue.length?'disabled':''}>${key==='reading'?'开始阅读':key==='project'?'开始项目关卡':key==='career'?'开始自测':'开始练习'}${queue.length?' · '+queue.length+' 项':''} →</button>${key==='project'||key==='career'?`<button data-go="${key==='project'?'agent':'career'}">打开完整任务</button>`:''}</div>${!queue.length?'<small>暂无到期题，可以先学其他模块。</small>':''}</article>`;
  }).join('')}</div><small>模块里的知识自测、代码测试分别判分；完成练习不会自动增加学习分钟。</small>`;}
 function cancelModule(){clearTimeout(moduleAdvanceTimer);moduleAdvanceTimer=null;moduleSession=null;}
 function startModule(key){cancelModule();const queue=moduleQueue(key);if(!queue.length)return toast('这个模块暂时没有到期练习');moduleSession={key,queue,index:0,passed:[],auto:true};showModuleItem();}
@@ -43,4 +43,4 @@ function moduleResult(id,correct,{readingComplete=false}={}){
 function queueModuleAdvance(){if(moduleSession?.auto){const session=moduleSession,index=session.index;clearTimeout(moduleAdvanceTimer);moduleAdvanceTimer=setTimeout(()=>{if(moduleSession===session&&session.index===index)advanceModule();},1200);}}
 function advanceModule(){const s=moduleSession;if(!s||!s.passed.includes(s.index))return;clearTimeout(moduleAdvanceTimer);const item=s.queue[s.index];if(item.kind==='lesson'&&$('#evidence')){const p=pFor(item.id);p.evidence=$('#evidence').value;state.progress[item.id]=p;save();}else if(item.kind==='code'&&$('#code-editor'))saveCodeDraft(item.id);if(item.kind==='code')stopCode();const sameKind=s.queue[s.index+1]?.kind===item.kind;if(!sameKind){$(item.kind==='code'?'#code-dialog':'#lesson').close();}s.index++;showModuleItem();}
 function retryModuleLesson(id){if(!moduleSession)return;clearTimeout(moduleAdvanceTimer);const current=moduleSession.queue[moduleSession.index];if(current?.id===id){openLesson(id);decorateModule('lesson');}}
-function finishModule(){const s=moduleSession;if(!s)return;const title=dailyRecipe()[MODULE_KEYS.indexOf(s.key)][1],task=s.key==='project'||s.key==='career';moduleSession=null;$('#lesson-body').innerHTML=`<section class="module-finished"><span class="eyebrow">SESSION COMPLETE</span><h1>${esc(title)}，练习完成 🌿</h1><p>本轮通过 ${s.passed.length}/${s.queue.length} 项。${task?'基础自测已完成，接下来进入真实项目或投递任务。':'结果和已有笔记已保存；代码通过指本地公开案例通过。'}</p><div class="actions"><button id="finish-module" class="primary">${task?'进入实际任务':'回到今日配方'}</button><button id="repeat-module">再练一个模块</button></div></section>`;$('#finish-module').onclick=()=>{$('#lesson').close();go(task?'career':'today')};$('#repeat-module').onclick=()=>{$('#lesson').close();go('today')};if(!$('#lesson').open)$('#lesson').showModal();}
+function finishModule(){const s=moduleSession;if(!s)return;const title=dailyRecipe()[MODULE_KEYS.indexOf(s.key)][1],task=s.key==='project'||s.key==='career';moduleSession=null;$('#lesson-body').innerHTML=`<section class="module-finished"><span class="eyebrow">SESSION COMPLETE</span><h1>${esc(title)}，练习完成 🌿</h1><p>本轮通过 ${s.passed.length}/${s.queue.length} 项。${s.key==='project'?'本轮项目关卡已完成，可以继续其他关卡或下载完整项目。':task?'基础自测已完成，接下来进入投递任务。':'结果和已有笔记已保存；代码通过指本地公开案例通过。'}</p><div class="actions"><button id="finish-module" class="primary">${task?'进入实际任务':'回到今日配方'}</button><button id="repeat-module">再练一个模块</button></div></section>`;$('#finish-module').onclick=()=>{$('#lesson').close();go(s.key==='project'?'agent':task?'career':'today')};$('#repeat-module').onclick=()=>{$('#lesson').close();go('today')};if(!$('#lesson').open)$('#lesson').showModal();}

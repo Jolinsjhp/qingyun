@@ -321,7 +321,13 @@ window.QINGYUN_PLAN = {
       "hint": "print(\"姓名：你的名字\") 会输出一行；另外两行也用 print，填写自己的内容。",
       "level": "基础",
       "reference": "print(\"姓名：小青\")\nprint(\"目标岗位：AI 实施顾问\")\nprint(\"本周学习目标：掌握变量和 print\")",
-      "referenceExplanation": "print 每次输出一行。把示例内容换成自己的信息，保留三个标签。"
+      "referenceExplanation": "print 每次输出一行。把示例内容换成自己的信息，保留三个标签。",
+      "guide": {
+        "explanation": "引号里面是字符串；print 把它显示出来。先把 ___ 改成自己的名字，再运行；接着修改另外两行。",
+        "fill": "print(\"姓名：___\")\nprint(\"目标岗位：AI 实施\")\nprint(\"本周学习目标：掌握 print\")\n",
+        "example": "print(\"姓名：小青\")\nprint(\"目标岗位：AI 实施顾问\")\nprint(\"本周学习目标：掌握变量和 print\")",
+        "modify": "填空通过后，换一组输入手算预期，再运行；独立模式只保留函数骨架，尝试自己重写。"
+      }
     },
     {
       "id": "py1",
@@ -361,7 +367,13 @@ window.QINGYUN_PLAN = {
       "hint": "总分钟由小时部分乘 60，再加分钟。",
       "level": "基础",
       "reference": "class Solution:\n    def totalMinutes(self, hours, minutes):\n        return hours * 60 + minutes\n",
-      "referenceExplanation": "小时乘 60，再加分钟。时间和额外空间均为 O(1)。"
+      "referenceExplanation": "小时乘 60，再加分钟。时间和额外空间均为 O(1)。",
+      "guide": {
+        "explanation": "def 定义函数；hours 和 minutes 是输入；return 返回结果。1 小时等于 60 分钟，填入这个数字。class Solution 是判题包装，先保持原样。",
+        "fill": "class Solution:\n    def totalMinutes(self, hours, minutes):\n        return hours * ___ + minutes\n",
+        "example": "class Solution:\n    def totalMinutes(self, hours, minutes):\n        return hours * 60 + minutes\n",
+        "modify": "填空通过后，换一组输入手算预期，再运行；独立模式只保留函数骨架，尝试自己重写。"
+      }
     },
     {
       "id": "py2",
@@ -404,7 +416,13 @@ window.QINGYUN_PLAN = {
       "hint": "先用循环累加，再比较内置 sum。",
       "level": "基础",
       "reference": "class Solution:\n    def totalStudy(self, minutes):\n        total = 0\n        for value in minutes:\n            total += value\n        return total\n",
-      "referenceExplanation": "从 0 开始累加，空列表也得到 0。时间 O(n)，额外空间 O(1)。"
+      "referenceExplanation": "从 0 开始累加，空列表也得到 0。时间 O(n)，额外空间 O(1)。",
+      "guide": {
+        "explanation": "列表是一组值；for 依次取出值，value 是当前值；total 从 0 开始累加。填 value，留意缩进。",
+        "fill": "class Solution:\n    def totalStudy(self, minutes):\n        total = 0\n        for value in minutes:\n            total += ___\n        return total\n",
+        "example": "class Solution:\n    def totalStudy(self, minutes):\n        total = 0\n        for value in minutes:\n            total += value\n        return total\n",
+        "modify": "填空通过后，换一组输入手算预期，再运行；独立模式只保留函数骨架，尝试自己重写。"
+      }
     },
     {
       "id": "py3",
@@ -451,7 +469,13 @@ window.QINGYUN_PLAN = {
       "hint": "对每个值判断 >=，符合则加一。",
       "level": "基础",
       "reference": "class Solution:\n    def countDays(self, minutes, target):\n        return sum(value >= target for value in minutes)\n",
-      "referenceExplanation": "逐个判断是否达到目标，True 按 1 计数。时间 O(n)，额外空间 O(1)。"
+      "referenceExplanation": "逐个判断是否达到目标，True 按 1 计数。时间 O(n)，额外空间 O(1)。",
+      "guide": {
+        "explanation": "if 判断每一天是否达到 target；符合时 count 加 1。先填 target，再解释为什么用 >= 而不是 >。",
+        "fill": "class Solution:\n    def countDays(self, minutes, target):\n        count = 0\n        for value in minutes:\n            if value >= ___:\n                count += 1\n        return count\n",
+        "example": "class Solution:\n    def countDays(self, minutes, target):\n        return sum(value >= target for value in minutes)\n",
+        "modify": "填空通过后，换一组输入手算预期，再运行；独立模式只保留函数骨架，尝试自己重写。"
+      }
     },
     {
       "id": "py4",
@@ -488,7 +512,13 @@ window.QINGYUN_PLAN = {
       "hint": "使用字典 get(topic, 0) 获取已有计数。",
       "level": "基础",
       "reference": "class Solution:\n    def countTopics(self, topics):\n        counts = {}\n        for topic in topics:\n            counts[topic] = counts.get(topic, 0) + 1\n        return counts\n",
-      "referenceExplanation": "字典保存每个科目的次数。时间 O(n)，空间 O(k)，k 是不同科目数。"
+      "referenceExplanation": "字典保存每个科目的次数。时间 O(n)，空间 O(k)，k 是不同科目数。",
+      "guide": {
+        "explanation": "字典按科目保存次数；get(topic, 0) 在没见过科目时返回 0，每出现一次加 1。",
+        "fill": "class Solution:\n    def countTopics(self, topics):\n        counts = {}\n        for topic in topics:\n            counts[topic] = counts.get(topic, 0) + ___\n        return counts\n",
+        "example": "class Solution:\n    def countTopics(self, topics):\n        counts = {}\n        for topic in topics:\n            counts[topic] = counts.get(topic, 0) + 1\n        return counts\n",
+        "modify": "填空通过后，换一组输入手算预期，再运行；独立模式只保留函数骨架，尝试自己重写。"
+      }
     },
     {
       "id": "lc1480",
@@ -1871,6 +1901,504 @@ window.QINGYUN_PLAN = {
       "tests": [],
       "reference": "SELECT d.name AS Department, e.name AS Employee, e.salary AS Salary FROM Employee e JOIN Department d ON e.departmentId = d.id WHERE e.salary = (SELECT MAX(x.salary) FROM Employee x WHERE x.departmentId = e.departmentId);",
       "referenceExplanation": "MySQL 参考解。先核对原题表结构、NULL、重复值及输出列；在 LeetCode 选择 MySQL 提交验证。"
+    },
+    {
+      "id": "agent1",
+      "title": "Agent 项目 · 01 需求校验",
+      "url": "",
+      "week": 3,
+      "topic": "需求校验",
+      "level": "Agent",
+      "method": "validateRequest",
+      "starter": "class Solution:\n    def validateRequest(self, guests, budget):\n        # 实现这一关\n        pass\n",
+      "body": "活动运营 Agent 的第 1 关。先检查输入。if 表示满足条件时执行；return 返回字典，ask 表示需要追问。",
+      "tests": [
+        {
+          "args": [
+            12,
+            300
+          ],
+          "expected": {
+            "status": "ready",
+            "guests": 12,
+            "budget": 300
+          }
+        },
+        {
+          "args": [
+            0,
+            300
+          ],
+          "expected": {
+            "status": "ask",
+            "question": "人数和预算必须大于零"
+          }
+        },
+        {
+          "args": [
+            12,
+            -1
+          ],
+          "expected": {
+            "status": "ask",
+            "question": "人数和预算必须大于零"
+          }
+        }
+      ],
+      "hint": "填空处需要：guests <= 0 or budget <= 0",
+      "reference": "class Solution:\n    def validateRequest(self, guests, budget):\n        if guests <= 0 or budget <= 0:\n            return {\"status\": \"ask\", \"question\": \"人数和预算必须大于零\"}\n        return {\"status\": \"ready\", \"guests\": guests, \"budget\": budget}\n",
+      "referenceExplanation": "先检查输入。if 表示满足条件时执行；return 返回字典，ask 表示需要追问。",
+      "guide": {
+        "explanation": "先检查输入。if 表示满足条件时执行；return 返回字典，ask 表示需要追问。",
+        "fill": "class Solution:\n    def validateRequest(self, guests, budget):\n        if guests <= ___ or budget <= 0:\n            return {\"status\": \"ask\", \"question\": \"人数和预算必须大于零\"}\n        return {\"status\": \"ready\", \"guests\": guests, \"budget\": budget}\n",
+        "example": "class Solution:\n    def validateRequest(self, guests, budget):\n        if guests <= 0 or budget <= 0:\n            return {\"status\": \"ask\", \"question\": \"人数和预算必须大于零\"}\n        return {\"status\": \"ready\", \"guests\": guests, \"budget\": budget}\n",
+        "modify": "先让样例全部通过，再改一个输入预测输出。写一个没有出现在样例里的边界案例，记录理由。"
+      }
+    },
+    {
+      "id": "agent2",
+      "title": "Agent 项目 · 02 预算工具",
+      "url": "",
+      "week": 4,
+      "topic": "预算工具",
+      "level": "Agent",
+      "method": "budgetTool",
+      "starter": "class Solution:\n    def budgetTool(self, guests, budget, cost_per_guest):\n        # 实现这一关\n        pass\n",
+      "body": "活动运营 Agent 的第 2 关。工具是普通函数。模型不负责心算：人数乘单人成本，由工具返回可检查的结果。",
+      "tests": [
+        {
+          "args": [
+            12,
+            300,
+            20
+          ],
+          "expected": {
+            "total": 240,
+            "remaining": 60,
+            "within_budget": true
+          }
+        },
+        {
+          "args": [
+            12,
+            300,
+            30
+          ],
+          "expected": {
+            "total": 360,
+            "remaining": -60,
+            "within_budget": false
+          }
+        },
+        {
+          "args": [
+            1,
+            10,
+            10
+          ],
+          "expected": {
+            "total": 10,
+            "remaining": 0,
+            "within_budget": true
+          }
+        }
+      ],
+      "hint": "填空处需要：guests * cost_per_guest",
+      "reference": "class Solution:\n    def budgetTool(self, guests, budget, cost_per_guest):\n        total = guests * cost_per_guest\n        return {\"total\": total, \"remaining\": budget - total, \"within_budget\": total <= budget}\n",
+      "referenceExplanation": "工具是普通函数。模型不负责心算：人数乘单人成本，由工具返回可检查的结果。",
+      "guide": {
+        "explanation": "工具是普通函数。模型不负责心算：人数乘单人成本，由工具返回可检查的结果。",
+        "fill": "class Solution:\n    def budgetTool(self, guests, budget, cost_per_guest):\n        total = guests ___ cost_per_guest\n        return {\"total\": total, \"remaining\": budget - total, \"within_budget\": total <= budget}\n",
+        "example": "class Solution:\n    def budgetTool(self, guests, budget, cost_per_guest):\n        total = guests * cost_per_guest\n        return {\"total\": total, \"remaining\": budget - total, \"within_budget\": total <= budget}\n",
+        "modify": "先让样例全部通过，再改一个输入预测输出。写一个没有出现在样例里的边界案例，记录理由。"
+      }
+    },
+    {
+      "id": "agent3",
+      "title": "Agent 项目 · 03 选择工具 · 模拟模型",
+      "url": "",
+      "week": 5,
+      "topic": "选择工具 · 模拟模型",
+      "level": "Agent",
+      "method": "chooseTool",
+      "starter": "class Solution:\n    def chooseTool(self, intent):\n        # 实现这一关\n        pass\n",
+      "body": "活动运营 Agent 的第 3 关。这一步用字典模拟模型选择工具，未知任务先追问。它还不是实际 LLM 推理。",
+      "tests": [
+        {
+          "args": [
+            "预算"
+          ],
+          "expected": "budget"
+        },
+        {
+          "args": [
+            "菜单"
+          ],
+          "expected": "menu"
+        },
+        {
+          "args": [
+            "天气"
+          ],
+          "expected": "ask"
+        }
+      ],
+      "hint": "填空处需要：tools.get(intent, \"ask\")",
+      "reference": "class Solution:\n    def chooseTool(self, intent):\n        tools = {\"预算\": \"budget\", \"菜单\": \"menu\", \"报名\": \"tickets\"}\n        return tools.get(intent, \"ask\")\n",
+      "referenceExplanation": "这一步用字典模拟模型选择工具，未知任务先追问。它还不是实际 LLM 推理。",
+      "guide": {
+        "explanation": "这一步用字典模拟模型选择工具，未知任务先追问。它还不是实际 LLM 推理。",
+        "fill": "class Solution:\n    def chooseTool(self, intent):\n        tools = {\"预算\": \"budget\", \"菜单\": \"menu\", \"报名\": \"tickets\"}\n        return tools.get(intent, ___)\n",
+        "example": "class Solution:\n    def chooseTool(self, intent):\n        tools = {\"预算\": \"budget\", \"菜单\": \"menu\", \"报名\": \"tickets\"}\n        return tools.get(intent, \"ask\")\n",
+        "modify": "先让样例全部通过，再改一个输入预测输出。写一个没有出现在样例里的边界案例，记录理由。"
+      }
+    },
+    {
+      "id": "agent4",
+      "title": "Agent 项目 · 04 工具分发与错误处理",
+      "url": "",
+      "week": 6,
+      "topic": "工具分发与错误处理",
+      "level": "Agent",
+      "method": "dispatch",
+      "starter": "class Solution:\n    def dispatch(self, tool, args):\n        # 实现这一关\n        pass\n",
+      "body": "活动运营 Agent 的第 4 关。只允许白名单工具。未知工具和非法参数返回错误，不直接执行任意模型代码。",
+      "tests": [
+        {
+          "args": [
+            "budget",
+            [
+              12,
+              20
+            ]
+          ],
+          "expected": {
+            "total": 240
+          }
+        },
+        {
+          "args": [
+            "budget",
+            [
+              0,
+              20
+            ]
+          ],
+          "expected": {
+            "error": "invalid arguments"
+          }
+        },
+        {
+          "args": [
+            "delete",
+            [
+              12,
+              20
+            ]
+          ],
+          "expected": {
+            "error": "unknown tool"
+          }
+        }
+      ],
+      "hint": "填空处需要：tool == \"budget\"",
+      "reference": "class Solution:\n    def dispatch(self, tool, args):\n        if tool == \"budget\":\n            guests, cost = args\n            if guests <= 0 or cost < 0:\n                return {\"error\": \"invalid arguments\"}\n            return {\"total\": guests * cost}\n        return {\"error\": \"unknown tool\"}\n",
+      "referenceExplanation": "只允许白名单工具。未知工具和非法参数返回错误，不直接执行任意模型代码。",
+      "guide": {
+        "explanation": "只允许白名单工具。未知工具和非法参数返回错误，不直接执行任意模型代码。",
+        "fill": "class Solution:\n    def dispatch(self, tool, args):\n        if tool == ___:\n            guests, cost = args\n            if guests <= 0 or cost < 0:\n                return {\"error\": \"invalid arguments\"}\n            return {\"total\": guests * cost}\n        return {\"error\": \"unknown tool\"}\n",
+        "example": "class Solution:\n    def dispatch(self, tool, args):\n        if tool == \"budget\":\n            guests, cost = args\n            if guests <= 0 or cost < 0:\n                return {\"error\": \"invalid arguments\"}\n            return {\"total\": guests * cost}\n        return {\"error\": \"unknown tool\"}\n",
+        "modify": "先让样例全部通过，再改一个输入预测输出。写一个没有出现在样例里的边界案例，记录理由。"
+      }
+    },
+    {
+      "id": "agent5",
+      "title": "Agent 项目 · 05 有来源的资料检索",
+      "url": "",
+      "week": 7,
+      "topic": "有来源的资料检索",
+      "level": "Agent",
+      "method": "retrieve",
+      "starter": "class Solution:\n    def retrieve(self, query, notes):\n        # 实现这一关\n        pass\n",
+      "body": "活动运营 Agent 的第 5 关。先用关键词检索练通数据流，保留来源。没有匹配就返回空列表；这是检索原型，不是向量检索。",
+      "tests": [
+        {
+          "args": [
+            "vegan",
+            [
+              {
+                "text": "Vegan menu costs 20",
+                "source": "menu.json"
+              },
+              {
+                "text": "12 seats",
+                "source": "event.json"
+              }
+            ]
+          ],
+          "expected": [
+            {
+              "text": "Vegan menu costs 20",
+              "source": "menu.json"
+            }
+          ]
+        },
+        {
+          "args": [
+            "missing",
+            [
+              {
+                "text": "12 seats",
+                "source": "event.json"
+              }
+            ]
+          ],
+          "expected": []
+        }
+      ],
+      "hint": "填空处需要：query.lower() in note[\"text\"].lower()",
+      "reference": "class Solution:\n    def retrieve(self, query, notes):\n        return [{\"text\": note[\"text\"], \"source\": note[\"source\"]} for note in notes if query.lower() in note[\"text\"].lower()]\n",
+      "referenceExplanation": "先用关键词检索练通数据流，保留来源。没有匹配就返回空列表；这是检索原型，不是向量检索。",
+      "guide": {
+        "explanation": "先用关键词检索练通数据流，保留来源。没有匹配就返回空列表；这是检索原型，不是向量检索。",
+        "fill": "class Solution:\n    def retrieve(self, query, notes):\n        return [{\"text\": note[\"text\"], \"source\": note[\"source\"]} for note in notes if ___ in note[\"text\"].lower()]\n",
+        "example": "class Solution:\n    def retrieve(self, query, notes):\n        return [{\"text\": note[\"text\"], \"source\": note[\"source\"]} for note in notes if query.lower() in note[\"text\"].lower()]\n",
+        "modify": "先让样例全部通过，再改一个输入预测输出。写一个没有出现在样例里的边界案例，记录理由。"
+      }
+    },
+    {
+      "id": "agent6",
+      "title": "Agent 项目 · 06 执行记录与确认",
+      "url": "",
+      "week": 8,
+      "topic": "执行记录与确认",
+      "level": "Agent",
+      "method": "runPlan",
+      "starter": "class Solution:\n    def runPlan(self, tasks, max_steps):\n        # 实现这一关\n        pass\n",
+      "body": "活动运营 Agent 的第 6 关。循环执行模型计划的教学模拟。限制步数，发布前停下确认；log 保存过程。",
+      "tests": [
+        {
+          "args": [
+            [
+              "budget",
+              "menu"
+            ],
+            3
+          ],
+          "expected": {
+            "status": "done",
+            "log": [
+              {
+                "tool": "budget",
+                "result": "mock_ok"
+              },
+              {
+                "tool": "menu",
+                "result": "mock_ok"
+              }
+            ]
+          }
+        },
+        {
+          "args": [
+            [
+              "publish"
+            ],
+            3
+          ],
+          "expected": {
+            "status": "needs_confirmation",
+            "log": []
+          }
+        },
+        {
+          "args": [
+            [
+              "budget",
+              "menu"
+            ],
+            1
+          ],
+          "expected": {
+            "status": "stopped",
+            "log": [
+              {
+                "tool": "budget",
+                "result": "mock_ok"
+              }
+            ]
+          }
+        }
+      ],
+      "hint": "填空处需要：len(log) >= max_steps",
+      "reference": "class Solution:\n    def runPlan(self, tasks, max_steps):\n        log = []\n        for task in tasks:\n            if len(log) >= max_steps:\n                return {\"status\": \"stopped\", \"log\": log}\n            if task == \"publish\":\n                return {\"status\": \"needs_confirmation\", \"log\": log}\n            log.append({\"tool\": task, \"result\": \"mock_ok\"})\n        return {\"status\": \"done\", \"log\": log}\n",
+      "referenceExplanation": "循环执行模型计划的教学模拟。限制步数，发布前停下确认；log 保存过程。",
+      "guide": {
+        "explanation": "循环执行模型计划的教学模拟。限制步数，发布前停下确认；log 保存过程。",
+        "fill": "class Solution:\n    def runPlan(self, tasks, max_steps):\n        log = []\n        for task in tasks:\n            if len(log) ___ max_steps:\n                return {\"status\": \"stopped\", \"log\": log}\n            if task == \"publish\":\n                return {\"status\": \"needs_confirmation\", \"log\": log}\n            log.append({\"tool\": task, \"result\": \"mock_ok\"})\n        return {\"status\": \"done\", \"log\": log}\n",
+        "example": "class Solution:\n    def runPlan(self, tasks, max_steps):\n        log = []\n        for task in tasks:\n            if len(log) >= max_steps:\n                return {\"status\": \"stopped\", \"log\": log}\n            if task == \"publish\":\n                return {\"status\": \"needs_confirmation\", \"log\": log}\n            log.append({\"tool\": task, \"result\": \"mock_ok\"})\n        return {\"status\": \"done\", \"log\": log}\n",
+        "modify": "先让样例全部通过，再改一个输入预测输出。写一个没有出现在样例里的边界案例，记录理由。"
+      }
+    },
+    {
+      "id": "agent7",
+      "title": "Agent 项目 · 07 停止条件",
+      "url": "",
+      "week": 9,
+      "topic": "停止条件",
+      "level": "Agent",
+      "method": "shouldStop",
+      "starter": "class Solution:\n    def shouldStop(self, steps, max_steps, spent, limit):\n        # 实现这一关\n        pass\n",
+      "body": "活动运营 Agent 的第 7 关。达到步数或成本任一上限就停止。or 是“至少一个条件成立”。",
+      "tests": [
+        {
+          "args": [
+            3,
+            3,
+            0,
+            10
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            1,
+            3,
+            10,
+            10
+          ],
+          "expected": true
+        },
+        {
+          "args": [
+            1,
+            3,
+            1,
+            10
+          ],
+          "expected": false
+        }
+      ],
+      "hint": "填空处需要：steps >= max_steps or spent >= limit",
+      "reference": "class Solution:\n    def shouldStop(self, steps, max_steps, spent, limit):\n        return steps >= max_steps or spent >= limit\n",
+      "referenceExplanation": "达到步数或成本任一上限就停止。or 是“至少一个条件成立”。",
+      "guide": {
+        "explanation": "达到步数或成本任一上限就停止。or 是“至少一个条件成立”。",
+        "fill": "class Solution:\n    def shouldStop(self, steps, max_steps, spent, limit):\n        return steps >= max_steps ___ spent >= limit\n",
+        "example": "class Solution:\n    def shouldStop(self, steps, max_steps, spent, limit):\n        return steps >= max_steps or spent >= limit\n",
+        "modify": "先让样例全部通过，再改一个输入预测输出。写一个没有出现在样例里的边界案例，记录理由。"
+      }
+    },
+    {
+      "id": "agent8",
+      "title": "Agent 项目 · 08 评估与交付",
+      "url": "",
+      "week": 10,
+      "topic": "评估与交付",
+      "level": "Agent",
+      "method": "evaluate",
+      "starter": "class Solution:\n    def evaluate(self, expected, actual):\n        # 实现这一关\n        pass\n",
+      "body": "活动运营 Agent 的第 8 关。对照预期与实际结果计分，空测试集避免除零。公开样例只是起点，还需新增自己的边界案例。",
+      "tests": [
+        {
+          "args": [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              1,
+              0,
+              3
+            ]
+          ],
+          "expected": {
+            "passed": 2,
+            "total": 3,
+            "score": 0.6666666666666666
+          }
+        },
+        {
+          "args": [
+            [],
+            []
+          ],
+          "expected": {
+            "passed": 0,
+            "total": 0,
+            "score": 0
+          }
+        },
+        {
+          "args": [
+            [
+              true
+            ],
+            [
+              false
+            ]
+          ],
+          "expected": {
+            "passed": 0,
+            "total": 1,
+            "score": 0.0
+          }
+        }
+      ],
+      "hint": "填空处需要：sum(a == b for a, b in zip(expected, actual))",
+      "reference": "class Solution:\n    def evaluate(self, expected, actual):\n        passed = sum(a == b for a, b in zip(expected, actual))\n        return {\"passed\": passed, \"total\": len(expected), \"score\": passed / len(expected) if expected else 0}\n",
+      "referenceExplanation": "对照预期与实际结果计分，空测试集避免除零。公开样例只是起点，还需新增自己的边界案例。",
+      "guide": {
+        "explanation": "对照预期与实际结果计分，空测试集避免除零。公开样例只是起点，还需新增自己的边界案例。",
+        "fill": "class Solution:\n    def evaluate(self, expected, actual):\n        passed = sum(a ___ b for a, b in zip(expected, actual))\n        return {\"passed\": passed, \"total\": len(expected), \"score\": passed / len(expected) if expected else 0}\n",
+        "example": "class Solution:\n    def evaluate(self, expected, actual):\n        passed = sum(a == b for a, b in zip(expected, actual))\n        return {\"passed\": passed, \"total\": len(expected), \"score\": passed / len(expected) if expected else 0}\n",
+        "modify": "先让样例全部通过，再改一个输入预测输出。写一个没有出现在样例里的边界案例，记录理由。"
+      }
+    }
+  ],
+  "courseRoute": [
+    {
+      "stage": "中文概念 · 现在",
+      "title": "李宏毅 · 2025 AI Agent",
+      "url": "https://speech.ee.ntu.edu.tw/~hylee/ml/2025-spring.php",
+      "why": "只选 AI Agent 讲座，解释工具、检索与执行过程；不要求先做全部大学作业。",
+      "task": "画出活动需求 → 预算工具 → 结果的流程。"
+    },
+    {
+      "stage": "实操主线 · 会函数和字典后",
+      "title": "Hugging Face · AI Agents Course",
+      "url": "https://huggingface.co/learn/agents-course/en/unit0/introduction",
+      "why": "Unit 0–1 入门；后续只选 smolagents 一种框架，不同时学三种。",
+      "task": "对应项目第 3–6 关：工具选择、执行、日志。"
+    },
+    {
+      "stage": "工程方法 · 首个工具跑通后",
+      "title": "Andrew Ng · Agentic AI",
+      "url": "https://www.deeplearning.ai/courses/agentic-ai",
+      "why": "工具、规划、反思、评估；优先普通 Python 的实现。课程实验室权益以官方为准。",
+      "task": "对应第 7–8 关：停止条件、评估与失败分析。"
+    },
+    {
+      "stage": "底层选修 · 后置",
+      "title": "李沐 · 动手学深度学习",
+      "url": "https://d2l.ai/",
+      "why": "核实到深度学习教材，未核实《动手学 AI Agent》系列。选数据操作和神经网络基础。",
+      "task": "未来理解张量与训练，不作为当前 Agent 项目的前置任务。"
+    },
+    {
+      "stage": "底层选修 · 后置",
+      "title": "Karpathy · Neural Networks: Zero to Hero",
+      "url": "https://github.com/karpathy/nn-zero-to-hero",
+      "why": "micrograd 等底层实现；未核实“4 小时构建 AutoGPT”课程。",
+      "task": "Python 和导数熟悉后复现一小段并写断言。"
+    },
+    {
+      "stage": "部署选修 · 长期",
+      "title": "韩松 / MIT · TinyML and Efficient Deep Learning Computing",
+      "url": "https://hanlab.mit.edu/courses/2024-fall-65940",
+      "why": "量化、剪枝和高效部署，有 ML 与体系结构基础要求；不采用未经核实的树莓派 2GB 描述。",
+      "task": "有完整 Agent 后，再研究本地模型部署的延迟和内存。"
     }
   ]
 };
